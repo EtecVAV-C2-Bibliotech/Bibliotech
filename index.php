@@ -41,7 +41,7 @@ if (!isset($_SESSION['logado'])) {
         <?php if ($_SESSION['funcao'] === 'gerente'): ?>
            <a href="cadastro_livro.php">Cadastrar livro</a> | <a href="paniel.php">Painel de controle</a> | <a href="cadastro.php">Cadastrar usuário</a><br>
         <?php endif; ?>
-        <a href="entrada_produto.php">Entrada Produto | </a>
+        <a href="entrada_produto.php">Entrada do Produto | </a>
         <a href="lista.php">Lista dos livros | </a>
         <a href="emprestimos.php">Empréstimos | </a>
         <a href="logout.php">Sair</a>

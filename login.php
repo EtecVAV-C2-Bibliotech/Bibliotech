@@ -50,10 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <title>Login</title>
       
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
-<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+<body class="bg-dark d-flex align-items-center justify-content-center vh-100">
     <div class="container">
         <h2>Login</h2>
         <?php if ($erro): ?>

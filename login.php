@@ -60,19 +60,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
-<body class="bg-white d-flex align-items-center justify-content-center vh-100">
-    <div class="container">
-        <h2>Login</h2>
-        <?php if ($erro): ?>
-            <p class="erro"><?= htmlspecialchars($erro) ?></p>
-        <?php endif; ?>
-        <form method="POST">
-            <label>Nickname: <input type="text" name="nickname" required></label><br><br>
-            <label>Senha: <input type="password" name="senha" required id="senha"></label><br><br>
-            <button type="button" onclick="toggleSenha()">Mostrar</button>
-</label><br><br>
-            <button type="submit">Entrar</button>
-        </form>
+<body class="bg-white d-flex align-items-center justify-content-center vh-100  ">
+     <div class="container-fluid m-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-8">
+                <div class="container card">
+              
+                    <h2 class="mb-4 text-center">Login</h2>
+                    <?php if ($erro): ?>
+                        <p class="erro text-danger text-center"><?= htmlspecialchars($erro) ?></p>
+                    <?php endif; ?>
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="nickname" class="form-label">Nickname</label>
+                            <input type="text" name="nickname" id="nickname" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Senha</label>
+                
+                            <div class="input-group ">
+                                <input type="password" name="senha" id="senha" class="form-control container-fluid" required>
+                                <button type="button" class=" btn-outline-secondary " onclick="toggleSenha()">Mostrar</button>
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" >Entrar</button>
+                        </div>
+                    </form>
+                </div>
+                
+            
+        </div>
     </div>
 </body>
 <script>

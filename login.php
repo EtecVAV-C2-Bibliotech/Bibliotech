@@ -61,9 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body class="bg-white d-flex align-items-center justify-content-center vh-100  ">
-     <div class="container-fluid m-5">
+     <div class="container m-5 ">
         <div class="row justify-content-center">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-8">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8">
                 <div class="container card">
               
                     <h2 class="mb-4 text-center">Login</h2>

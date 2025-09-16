@@ -78,7 +78,7 @@ button:hover {
 ul {
     list-style-type: none;
     padding-left: 0;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
 }
 
 ul li {
@@ -91,13 +91,13 @@ ul li {
 .sucesso {
     color: #2e7d32;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 }
 
 .erro {
     color: #b71c1c;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 }
 
 a {

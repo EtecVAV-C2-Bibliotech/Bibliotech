@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 700px;
     margin: 40px auto;
     background: #fffdf7;
     padding: 30px 35px;
@@ -17,6 +17,7 @@ body {
 }
 
 h1, h3 {
+    font-size: 1.5rem;
     color: #5c3b1e;
     font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
     margin-bottom: 15px;
@@ -30,7 +31,7 @@ label {
     display: block;
     margin-top: 12px;
     font-weight: bold;
-    font-size: 0.95rem;
+    font-size: 3rem;
     color: #4a3a28;
 }
 

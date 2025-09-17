@@ -60,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
-<body class="bg-white d-flex align-items-center justify-content-center vh-100   ">
-     <div class="container m-5 ">
+<body class="d-flex align-items-center justify-content-center vh-100   ">
+     <div class="container m-5">
         <div class="row justify-content-center">
             <div class="col-12 col-sm-12 col-md-12 col-lg-8">
                
@@ -88,8 +88,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </form>
                 </div>
-                
-            
+        </div>
+            </div>
+        </div>
+        </div>
+     </div>
         </div>
     </div>
 </body>

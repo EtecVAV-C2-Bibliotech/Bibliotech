@@ -27,6 +27,9 @@ SET time_zone = "+00:00";
 -- Estrutura para tabela `emprestimos`
 --
 
+create database biblioteca_funcionarios;
+use biblioteca_funcionarios;
+
 CREATE TABLE `emprestimos` (
   `idEmprestimo` int(11) NOT NULL,
   `idFunc` int(11) NOT NULL,

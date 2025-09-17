@@ -62,6 +62,8 @@ $emprestimos = $conn->query("
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/bootstrap.bundle.min.js"></script>
     <meta charset="UTF-8">
     <title>Empréstimos</title>
     <link rel="stylesheet" href="css/estilo.css">

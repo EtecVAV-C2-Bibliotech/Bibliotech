@@ -9,13 +9,19 @@ if (!isset($_SESSION['logado'])) {
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
     <meta charset="UTF-8">
     <title>Início</title>
+     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilo.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+
 </head>
-<body>
+<body class="d-flex align-items-center justify-content-center vh-75">
     <div class="container">
-        <h1>Bem-vindo, <?= htmlspecialchars($_SESSION['nickname']) ?>!</h1>
+    <div class="row justify-content-center">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+        <h3>Bem-vindo, <?= htmlspecialchars($_SESSION['nickname']) ?>!</h3>
 
         <form method="POST">
             <button type="submit" name="mudar" value="true">Mudar senha</button>
@@ -45,6 +51,8 @@ if (!isset($_SESSION['logado'])) {
         <a href="lista.php">Lista dos livros | </a>
         <a href="emprestimos.php">Empréstimos | </a>
         <a href="logout.php">Sair</a>
+    </div>
+    </div>
     </div>
 </body>
 </html>

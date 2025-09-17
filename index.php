@@ -17,10 +17,10 @@ if (!isset($_SESSION['logado'])) {
     <script src="js/bootstrap.bundle.min.js"></script>
 
 </head>
-<body class="d-flex align-items-center justify-content-center vh-75">
+<body class="d-flex align-items-center justify-content-center vh-50">
     <div class="container">
     <div class="row justify-content-center">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
         <h3>Bem-vindo, <?= htmlspecialchars($_SESSION['nickname']) ?>!</h3>
 
         <form method="POST">
@@ -43,14 +43,53 @@ if (!isset($_SESSION['logado'])) {
         <?php endif; ?>
 
         <br>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <nav class="navbar navbar-expand-lg rounded mt-4">
+                    <div class="container-fluid justify-content-center">
+                        <ul class="navbar-nav d-flex flex-row gap-3">
+                            <li class="nav-item">
+                                <a class="nav-link " href="entrada_produto.php">Entrada do Produto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="lista.php">Lista dos Livros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="emprestimos.php">Empréstimos</a>
+                            </li>
+                            <br>
+                            
+                         
+                        </ul>
+                    </div>
+                </nav>
+                <?php if ($_SESSION['funcao'] === 'gerente'): ?>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <nav class="navbar navbar-expand-lg rounded mt-4">
+                    <div class="container-fluid justify-content-center">
+                        <ul class="navbar-nav d-flex flex-row gap-3">
+                            <li class="nav-item">
+                            <a href="cadastro_livro.php">Cadastrar livro</a> 
+                            </li>
+                            <li class="nav-item">
+                            <a href="paniel.php">Painel de controle</a>
+                            </li>
+                            <li class="nav-item">
+                            <a href="cadastro.php">Cadastrar usuário</a>
+                            </li>
+                            <br>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="logout.php">Sair</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                </div>
+                <?php endif; ?>
 
-        <?php if ($_SESSION['funcao'] === 'gerente'): ?>
-           <a href="cadastro_livro.php">Cadastrar livro</a> | <a href="paniel.php">Painel de controle</a> | <a href="cadastro.php">Cadastrar usuário</a><br>
-        <?php endif; ?>
-        <a href="entrada_produto.php">Entrada do Produto | </a>
-        <a href="lista.php">Lista dos livros | </a>
-        <a href="emprestimos.php">Empréstimos | </a>
-        <a href="logout.php">Sair</a>
+ </div>
+
+ </div>
     </div>
     </div>
     </div>

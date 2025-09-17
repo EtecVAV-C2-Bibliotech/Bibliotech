@@ -16,8 +16,8 @@ body {
     border: 1px solid #e0d8c3;
 }
 
-h1, h3 {
-    font-size: 1.5rem;
+h1, h2, h3 {
+    font-size: 2.25rem;
     color: #5c3b1e;
     font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
     margin-bottom: 15px;
@@ -29,7 +29,7 @@ form {
 
 label {
     display: block;
-    margin-top: 12px;
+    margin-top: 4rem;
     font-weight: bold;
     font-size: 3rem;
     color: #4a3a28;
@@ -104,6 +104,7 @@ a {
     color: #6b4e32;
     text-decoration: none;
     font-weight: 600;
+    font-size: 1.75rem;
 }
 
 a:hover {

@@ -118,13 +118,47 @@ a:hover {
 }
 .hero {
     height: 100vh;
-    background: 
-      linear-gradient(rgba(255, 250, 243, 0.92), rgba(255, 250, 243, 0.92)),
-      url('../imagens/libary_branco.jpg') center/cover no-repeat;
-    color: #4a3a28;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: #2e2e2e;
+    position: relative;
+    background-size: contain;
+    background-position: center;
   }
+  
+  .hero.inicio {
+    background: linear-gradient(rgba(255,255,255,0.70), rgba(255,255,255,0.85)),
+                url('../imagens/libary_branco.jpg') center/cover no-repeat;
+  }
+  
+  .hero.entra_produ {
+    background: linear-gradient(rgba(245, 245, 245, 0.70), rgba(255,255,255,0.95)),
+                url('../imagens/entrada.jpg') center/cover no-repeat;
+  }
+  
+  .hero.login {
+    background: linear-gradient(rgba(249,250,251,0.70), rgba(249,250,251,0.9)),
+                url('../imagens/libary_branco.jpg') center/cover no-repeat;
+  }
+  
+  .hero.painel {
+    background: linear-gradient(rgba(240,245,255,0.70), rgba(240,245,255,0.9)),
+                url('../imagens/paniel.jpg') center/cover no-repeat;
+  }
+  .hero.emprestimo {
+    background: linear-gradient(rgba(240,245,255,0.70), rgba(240,245,255,0.9)),
+                url('../imagens/emprestimo.jpg') center/cover no-repeat;
+            
+            }
+  .hero.cadastro {
+    background: linear-gradient(rgba(240,245,255,0.70), rgba(240,245,255,0.9)),
+                url('../imagens/cadastro.jpg') center/cover no-repeat;
+  }
+  .hero.cadastro_pessoa {
+    background: linear-gradient(rgba(240,245,255,0.70), rgba(240,245,255,0.9)),
+                url('../imagens/cadastro_pessoas.jpg') center/cover no-repeat;
+  }
+  
   

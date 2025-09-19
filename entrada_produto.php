@@ -52,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Entrada de Produtos</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
-<body>
-<div class="container">
+<body class="hero entra_produ">
+<div class="container ">
     <h2>Registrar Entrada de Produtos</h2>
     <?php if ($erro): ?>
         <p class="erro"><?= htmlspecialchars($erro) ?></p>

@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Cadastro</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
-<body>
+<body class="hero cadastro_pessoa">
     <div class="container">
         <h2>Cadastro</h2>
         <?php if ($erro): ?>

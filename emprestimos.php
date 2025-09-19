@@ -9,7 +9,7 @@ if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-// Devolver livro
+
 if (isset($_GET['devolver'])) {
     $idEmprestimo = $_GET['devolver'];
     $res = $conn->query("SELECT idLivro FROM emprestimos WHERE idEmprestimo = $idEmprestimo");
@@ -24,7 +24,7 @@ if (isset($_GET['devolver'])) {
     }
 }
 
-// Registrar empréstimo
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['idFunc'], $_POST['idLivro'], $_POST['data_prevista'])) {
     $idFunc = $_POST['idFunc'];
     $idLivro = $_POST['idLivro'];
@@ -41,12 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['idFunc'], $_POST['idLi
     }
 }
 
-// Atualizar status atrasado
 $conn->query("UPDATE emprestimos 
               SET status = 'atrasado' 
               WHERE status = 'ativo' AND data_prevista < CURDATE()");
 
-// Buscar dados
 $funcionarios = $conn->query("SELECT idFunc, nome_completo FROM funcionarios");
 $livros = $conn->query("SELECT idLivro, titulo, quantidade FROM livros");
 $emprestimos = $conn->query("
@@ -68,7 +66,7 @@ $emprestimos = $conn->query("
     <title>Empréstimos</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
-<body>
+<body class="hero emprestimo">
 <div class="container">
     <h1>Empréstimos de Livros</h1>
 

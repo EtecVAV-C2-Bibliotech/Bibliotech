@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Editar Livro</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
-<body>
+<body class="hero cadastro">
 <div class="container">
     <h2>Editar Livro</h2>
 

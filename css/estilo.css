@@ -116,3 +116,15 @@ li {
 a:hover {
     text-decoration: underline;
 }
+.hero {
+    height: 100vh;
+    background: 
+      linear-gradient(rgba(255, 250, 243, 0.92), rgba(255, 250, 243, 0.92)),
+      url('../imagens/libary_branco.jpg') center/cover no-repeat;
+    color: #4a3a28;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  

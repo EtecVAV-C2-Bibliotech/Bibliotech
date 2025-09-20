@@ -19,42 +19,43 @@ $erro = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nickname = filter_input(INPUT_POST, 'nickname', FILTER_SANITIZE_EMAIL);
     $senha = $_POST['senha'] ?? '';
+    $cpf = preg_replace('/[^0-9]/', '', $_POST['cpf'] ?? '');
     $nome_completo = trim($_POST['nome_completo'] ?? '');
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $funcao = $_POST['funcao'] ?? '';
 
-    if (!$nickname || !$senha || !$nome_completo || !$email || !$funcao) {
+    if (!$nickname || !$senha || !$nome_completo || !$email || !$funcao || !$cpf) {
         $erro = "Por favor, preencha todos os campos.";
     } else if (strlen($senha) < 6 || strlen($senha) > 16) {
         $erro = "A senha deve ter entre 6 e 16 caracteres.";
     } else if (!validarSenha($senha)) {
         $erro = "A senha deve conter pelo menos uma letra maiúscula, uma minúscula, sem caracteres especiais e ter entre 6 e 16 caracteres.";
     } else {
-        $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO funcionarios (nickname, senha_hash, nome_completo, email, funcao) VALUES (?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($connect, $sql);
+        $sql_check = "SELECT idFunc FROM funcionarios WHERE cpf = ? OR nickname = ?";
+$stmt_check = mysqli_prepare($connect, $sql_check);
+mysqli_stmt_bind_param($stmt_check, "ss", $cpf, $nickname);
+mysqli_stmt_execute($stmt_check);
+mysqli_stmt_store_result($stmt_check);
 
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "sssss", $nickname, $senha_hash, $nome_completo, $email, $funcao);
+if (mysqli_stmt_num_rows($stmt_check) > 0) {
+    $erro = "CPF ou usuário já cadastrado.";
+} else {
+    $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+    $sql_insert = "INSERT INTO funcionarios (nickname, senha_hash, nome_completo, email, funcao, cpf) 
+                   VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt_insert = mysqli_prepare($connect, $sql_insert);
+    mysqli_stmt_bind_param($stmt_insert, "ssssss", $nickname, $senha_hash, $nome_completo, $email, $funcao, $cpf);
 
-            if (mysqli_stmt_execute($stmt)) {
-                mysqli_stmt_close($stmt);
-                mysqli_close($connect);
-                $_SESSION['logado'] = true;
-                $_SESSION['nickname'] = $nickname;
-                $_SESSION['nome_completo'] = $nome_completo;
-                $_SESSION['email'] = $email;
-                $_SESSION['funcao'] = $funcao;
-
-                header('Location: login.php');
-                exit;
-            } else {
-                $erro = "Erro ao inserir: " . mysqli_error($connect);
-            }
-        } else {
-            $erro = "Erro na preparação da query: " . mysqli_error($connect);
-        }
+    if (mysqli_stmt_execute($stmt_insert)) {
+        
+    } else {
+        $erro = "Erro ao inserir: " . mysqli_error($connect);
+    }
+    mysqli_stmt_close($stmt_insert);
+}
+mysqli_stmt_close($stmt_check);
+       
     }
 }
 ?>
@@ -86,6 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label>Nome completo:</label>
                 <input type="text" name="nome_completo" required>
             </div>
+             <div>
+                <label>CPF:</label>
+               <input type="text" name="cpf" maxlength="14" placeholder="000.000.000-00" required>
             <div>
                 <label>Email:</label>
                 <input type="email" name="email" required>

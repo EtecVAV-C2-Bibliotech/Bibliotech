@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="hero login d-flex align-items-center justify-content-center vh-100   ">
      <div class="container m-5">
         <div class="row justify-content-center">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+            <div class="col-6 col-sm-12 col-md-12 col-lg-8">
                
               
                     <h2 class="mb-4 text-center">Login</h2>

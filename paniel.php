@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     <title>Painel do Gerente</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
-<body>
+<body class="hero paniel  d-flex align-items-center justify-content-center vh-100">
 <div class="container">
     <h1>Painel de Configurações</h1>
     <p>Bem-vindo, <?= htmlspecialchars($_SESSION['nickname']); ?>!</p>

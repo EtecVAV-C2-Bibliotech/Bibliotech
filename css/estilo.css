@@ -117,17 +117,16 @@ a:hover {
     text-decoration: underline;
 }
 .hero {
-    height: 100vh;
+    height: 120vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: #2e2e2e;
     position: relative;
-    background-size: contain;
+    background-size: fill; 
     background-position: center;
-  }
-  
+}
   .hero.inicio {
     background: linear-gradient(rgba(255,255,255,0.70), rgba(255,255,255,0.85)),
                 url('../imagens/libary_branco.jpg') center/cover no-repeat;
@@ -145,7 +144,7 @@ a:hover {
   
   .hero.painel {
     background: linear-gradient(rgba(240,245,255,0.70), rgba(240,245,255,0.9)),
-                url('../imagens/paniel.jpg') center/cover no-repeat;
+                url('../imagens/paniel\ gerente.jpg') center/cover no-repeat;
   }
   .hero.emprestimo {
     background: linear-gradient(rgba(240,245,255,0.70), rgba(240,245,255,0.9)),

@@ -180,6 +180,49 @@ ALTER TABLE `livros`
   MODIFY `idLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
+
+ALTER TABLE funcionarios 
+
+
+
+ADD COLUMN cpf VARCHAR(14) NOT NULL UNIQUE AFTER email;
+
+
+
+
+
+
+
+
+
+
+
+UPDATE funcionarios SET cpf = '111.111.111-11' WHERE idFunc = 1; -- Gustavo
+
+
+UPDATE funcionarios SET cpf = '222.222.222-22' WHERE idFunc = 2; -- aa
+
+
+UPDATE funcionarios SET cpf = '333.333.333-33' WHERE idFunc = 3; -- Emily
+
+
+UPDATE funcionarios SET cpf = '444.444.444-44' WHERE idFunc = 4; -- Arthur
+
+
+UPDATE funcionarios SET cpf = '555.555.555-55' WHERE idFunc = 5; -- Felipe
+
+
+UPDATE funcionarios SET cpf = '666.666.666-66' WHERE idFunc = 6; -- Ronildo
+
+
+UPDATE funcionarios SET cpf = '777.777.777-77' WHERE idFunc = 17; -- Amadeu
+
+
+ALTER TABLE funcionarios 
+
+
+MODIFY cpf VARCHAR(14) NOT NULL UNIQUE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

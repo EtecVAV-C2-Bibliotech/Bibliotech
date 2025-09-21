@@ -42,7 +42,7 @@ if ($usuario['funcao'] === 'gerente') {
         <div class="d-grid gap-3 mt-4">
             <a href="livros.php" class="btn btn-primary btn-lg">Ver livros disponíveis</a>
             <a href="infoc.php" class="btn btn-secondary btn-lg">Alterar informações</a>
-            <a href="solicitacoes.php" class="btn btn-success btn-lg">Meus empréstimos / Solicitações</a>
+            <a href="solicitacoes.php" class="btn btn-success btn-lg">Meus empréstimos</a>
             <a href="logout.php" class="btn btn-danger btn-lg">Sair</a>
         </div>
     </div>

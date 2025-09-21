@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['logado'] = true;
                     $_SESSION['nickname'] = $usuario['nickname'];
                     $_SESSION['funcao'] = $usuario['funcao'];
+                    $_SESSION['idFunc'] = $usuario['idFunc'];
                     mysqli_stmt_close($stmt);
                     mysqli_close($connect);
                     header("Location: index.php");
@@ -85,6 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div class="d-grid">
                             <button type="submit" >Entrar</button>
+                        </div>
+                        <div class="d-grid mt-3">
+                            <a href="cadastrarcli.php" class="btn btn-outline-primary">Cadastre-se</a>
                         </div>
                     </form>
                 </div>

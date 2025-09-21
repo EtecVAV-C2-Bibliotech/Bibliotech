@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22/08/2025 às 13:42
+-- Tempo de geração: 21/09/2025 às 17:55
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -24,11 +24,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `emprestimos`
+-- Estrutura para tabela `cliente`
 --
 
-create database biblioteca_funcionarios;
-use biblioteca_funcionarios;
+CREATE TABLE `cliente` (
+  `idCliente` int(11) NOT NULL,
+  `Login` varchar(20) NOT NULL,
+  `Nome` varchar(50) NOT NULL,
+  `Senha` varchar(30) NOT NULL,
+  `E-mail` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `cliente`
+--
+
+INSERT INTO `cliente` (`idCliente`, `Login`, `Nome`, `Senha`, `E-mail`) VALUES
+(1, 'Felps', 'Felipe Rovesta', 'RONIL333', 'rovestaf@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `emprestimos`
+--
 
 CREATE TABLE `emprestimos` (
   `idEmprestimo` int(11) NOT NULL,
@@ -86,6 +104,7 @@ INSERT INTO `funcionarios` (`idFunc`, `nickname`, `senha_hash`, `nome_completo`,
 CREATE TABLE `livros` (
   `idLivro` int(11) NOT NULL,
   `titulo` varchar(255) NOT NULL,
+  `Sessão` varchar(30) NOT NULL,
   `autor` varchar(150) NOT NULL,
   `editora` varchar(100) DEFAULT NULL,
   `ano_publicacao` int(11) DEFAULT NULL,
@@ -97,13 +116,20 @@ CREATE TABLE `livros` (
 -- Despejando dados para a tabela `livros`
 --
 
-INSERT INTO `livros` (`idLivro`, `titulo`, `autor`, `editora`, `ano_publicacao`, `quantidade`, `data_cadastro`) VALUES
-(1, '1984', 'George Orwell', 'Secker and Warburg', 1949, 5, '2025-06-04 17:34:37'),
-(2, 'O Poder do Hábito', 'Charles Duhigg', 'Random House', 2012, 5, '2025-06-10 16:24:55');
+INSERT INTO `livros` (`idLivro`, `titulo`, `Sessão`, `autor`, `editora`, `ano_publicacao`, `quantidade`, `data_cadastro`) VALUES
+(1, '1984', 'Romance', 'George Orwell', 'Secker and Warburg', 1949, 5, '2025-06-04 17:34:37'),
+(2, 'O Poder do Hábito', 'Autoajuda', 'Charles Duhigg', 'Random House', 2012, 20, '2025-06-10 16:24:55');
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`idCliente`),
+  ADD UNIQUE KEY `Unico` (`Login`);
 
 --
 -- Índices de tabela `emprestimos`
@@ -130,6 +156,12 @@ ALTER TABLE `livros`
 --
 
 --
+-- AUTO_INCREMENT de tabela `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `emprestimos`
 --
 ALTER TABLE `emprestimos`
@@ -146,31 +178,6 @@ ALTER TABLE `funcionarios`
 --
 ALTER TABLE `livros`
   MODIFY `idLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
-ALTER TABLE funcionarios 
-ADD COLUMN cpf VARCHAR(14) NOT NULL UNIQUE AFTER email;
-
-
-
-UPDATE funcionarios SET cpf = '111.111.111-11' WHERE idFunc = 1; -- Gustavo
-UPDATE funcionarios SET cpf = '222.222.222-22' WHERE idFunc = 2; -- aa
-UPDATE funcionarios SET cpf = '333.333.333-33' WHERE idFunc = 3; -- Emily
-UPDATE funcionarios SET cpf = '444.444.444-44' WHERE idFunc = 4; -- Arthur
-UPDATE funcionarios SET cpf = '555.555.555-55' WHERE idFunc = 5; -- Felipe
-UPDATE funcionarios SET cpf = '666.666.666-66' WHERE idFunc = 6; -- Ronildo
-UPDATE funcionarios SET cpf = '777.777.777-77' WHERE idFunc = 17; -- Amadeu
-ALTER TABLE funcionarios 
-MODIFY cpf VARCHAR(14) NOT NULL UNIQUE;
---
--- Restrições para tabelas despejadas
---
-
---
--- Restrições para tabelas `emprestimos`
---
-ALTER TABLE `emprestimos`
-  ADD CONSTRAINT `fk_funcionario` FOREIGN KEY (`idFunc`) REFERENCES `funcionarios` (`idFunc`),
-  ADD CONSTRAINT `fk_livro` FOREIGN KEY (`idLivro`) REFERENCES `livros` (`idLivro`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

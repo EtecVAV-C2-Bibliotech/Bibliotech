@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/09/2025 às 21:07
+-- Tempo de geração: 21/09/2025 às 23:12
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -29,22 +29,26 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `emprestimos` (
   `idEmprestimo` int(11) NOT NULL,
-  `idFunc` int(11) NOT NULL,
+  `idFunc` int(11) DEFAULT NULL,
   `idLivro` int(11) NOT NULL,
   `data_emprestimo` date NOT NULL,
-  `data_prevista` date NOT NULL,
+  `data_prevista` date DEFAULT NULL,
   `data_devolucao` date DEFAULT NULL,
-  `status` enum('ativo','devolvido','atrasado') DEFAULT 'ativo'
+  `status` enum('ativo','devolvido','atrasado','solicitado') DEFAULT 'ativo',
+  `idCliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `emprestimos`
 --
 
-INSERT INTO `emprestimos` (`idEmprestimo`, `idFunc`, `idLivro`, `data_emprestimo`, `data_prevista`, `data_devolucao`, `status`) VALUES
-(1, 1, 2, '2025-08-22', '2025-08-29', '2025-08-22', 'devolvido'),
-(2, 17, 1, '2025-08-22', '2025-08-29', '2025-08-22', 'devolvido'),
-(3, 2, 2, '2025-08-22', '2025-08-23', '2025-08-22', 'devolvido');
+INSERT INTO `emprestimos` (`idEmprestimo`, `idFunc`, `idLivro`, `data_emprestimo`, `data_prevista`, `data_devolucao`, `status`, `idCliente`) VALUES
+(1, 1, 2, '2025-08-22', '2025-08-29', '2025-08-22', 'devolvido', 23),
+(2, 17, 1, '2025-08-22', '2025-08-29', '2025-08-22', 'devolvido', 23),
+(3, 2, 2, '2025-08-22', '2025-08-23', '2025-08-22', 'devolvido', 23),
+(4, 1, 2, '2025-09-21', '2025-09-30', '2025-09-21', 'devolvido', 23),
+(5, 1, 2, '2025-09-21', '2025-09-30', '2025-09-21', 'devolvido', 23),
+(6, 6, 1, '2025-09-21', '2025-09-30', '2025-09-21', 'devolvido', 23);
 
 -- --------------------------------------------------------
 
@@ -78,7 +82,9 @@ INSERT INTO `funcionarios` (`idFunc`, `nickname`, `senha_hash`, `nome_completo`,
 (20, 'Gustavo2', '$2y$10$V.zonwGizNmFsktKPifle.q.v2wwZbU9q8I6i0QGTNx4Q8hI16SJm', 'Gustavo Henrique', 'gustavo@gmail.com', '68119597036', 'gerente'),
 (21, 'Gustavo2322', '$2y$10$2eIATwbAEiMbT2.aGopnIOkSnRMCHNHOsxqzReY.lanj451H3rqca', 'Gustavo Henrique', 'gustavo@gmail.com', '48911879053', 'gerente'),
 (22, 'Gustavo2222', '$2y$10$TY5aXnmGHactCP6Q10wMduA0p0ZYboZlvV0Iy.1wmFq6EGjiwrDGy', 'Gustavo Henrique', 'tigorfoda@gmail.com', '58346938063', 'gerente'),
-(23, 'Felps', '$2y$10$2XNXkzCdc7UBtRN09K7pdeSVTO70q4htRfu8aWs4Ybl1/AA/5I4De', 'Felipe é uma besta burra', 'coisinhaburra@outlook.com.br', '43468875890', 'cliente');
+(23, 'Felps', '$2y$10$2XNXkzCdc7UBtRN09K7pdeSVTO70q4htRfu8aWs4Ybl1/AA/5I4De', 'Felipe é uma besta burra', 'coisinhaburra@outlook.com.br', '43468875890', 'cliente'),
+(24, 'Felipe10', '$2y$10$tDd4FUj0XSpMBYQkkI9NwuX/3jOHXQOSyP247LcDxP6F9Z/HACUS.', 'Felipe é uma besta burra2', 'f@gmail.com', '41284566800', 'repositor'),
+(25, 'Coisinha', '$2y$10$feI4uL17xDzluXYllqSSmOodcMA7yO9QVevQkgoJygDXvbPY093Ra', 'Coisa coisada', 'gfuig@gmail.com', '85356384289', 'cliente');
 
 -- --------------------------------------------------------
 
@@ -102,8 +108,8 @@ CREATE TABLE `livros` (
 --
 
 INSERT INTO `livros` (`idLivro`, `titulo`, `sessao`, `autor`, `editora`, `ano_publicacao`, `quantidade`, `data_cadastro`) VALUES
-(1, '1984', 'Romance', 'George Orwell', 'Secker and Warburg', 1949, 5, '2025-06-04 17:34:37'),
-(2, 'O Poder do Hábito', 'Autoajuda', 'Charles Duhigg', 'Random House', 2012, 5, '2025-06-10 16:24:55'),
+(1, '1984', 'Romance', 'George Orwell', 'Secker and Warburg', 1949, 8, '2025-06-04 17:34:37'),
+(2, 'O Poder do Hábito', 'Autoajuda', 'Charles Duhigg', 'Random House', 2012, 7, '2025-06-10 16:24:55'),
 (3, 'A Hipotese do Amor', 'Romance', 'Ali Hazelwood', 'Berkley Books', 2021, 3, '2025-09-21 17:41:19');
 
 --
@@ -116,7 +122,8 @@ INSERT INTO `livros` (`idLivro`, `titulo`, `sessao`, `autor`, `editora`, `ano_pu
 ALTER TABLE `emprestimos`
   ADD PRIMARY KEY (`idEmprestimo`),
   ADD KEY `fk_funcionario` (`idFunc`),
-  ADD KEY `fk_livro` (`idLivro`);
+  ADD KEY `fk_livro` (`idLivro`),
+  ADD KEY `fk_idCliente` (`idCliente`);
 
 --
 -- Índices de tabela `funcionarios`
@@ -139,13 +146,13 @@ ALTER TABLE `livros`
 -- AUTO_INCREMENT de tabela `emprestimos`
 --
 ALTER TABLE `emprestimos`
-  MODIFY `idEmprestimo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idEmprestimo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `idFunc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `idFunc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de tabela `livros`
@@ -162,6 +169,7 @@ ALTER TABLE `livros`
 --
 ALTER TABLE `emprestimos`
   ADD CONSTRAINT `fk_funcionario` FOREIGN KEY (`idFunc`) REFERENCES `funcionarios` (`idFunc`),
+  ADD CONSTRAINT `fk_idCliente` FOREIGN KEY (`idCliente`) REFERENCES `funcionarios` (`idFunc`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_livro` FOREIGN KEY (`idLivro`) REFERENCES `livros` (`idLivro`);
 COMMIT;
 

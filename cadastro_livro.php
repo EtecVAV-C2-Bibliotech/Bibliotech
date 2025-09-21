@@ -13,6 +13,7 @@ $sucesso = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titulo = trim($_POST['titulo'] ?? '');
     $autor = trim($_POST['autor'] ?? '');
+    $sessao = trim($_POST['sessao'] ?? '');
     $editora = trim($_POST['editora'] ?? '');
     $ano = intval($_POST['ano'] ?? 0);
     $quantidade = intval($_POST['quantidade'] ?? 0);
@@ -20,10 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$titulo || !$autor || $quantidade <= 0) {
         $erro = "Preencha pelo menos Título, Autor e Quantidade.";
     } else {
-        $sql = "INSERT INTO livros (titulo, autor, editora, ano_publicacao, quantidade) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO livros (titulo, autor, sessao, editora, ano_publicacao, quantidade) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($connect, $sql);
         if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "sssii", $titulo, $autor, $editora, $ano, $quantidade);
+            mysqli_stmt_bind_param($stmt, "ssssii", $titulo, $autor, $sessao, $editora, $ano, $quantidade);
             if (mysqli_stmt_execute($stmt)) {
                 $sucesso = "Livro cadastrado com sucesso!";
             } else {
@@ -57,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form method="POST">
         <div><label>Título:</label><input type="text" name="titulo" required></div>
         <div><label>Autor:</label><input type="text" name="autor" required></div>
+        <div><label>Sessão:</label><input type="text" name="sessao" required></div>
         <div><label>Editora:</label><input type="text" name="editora"></div>
         <div><label>Ano de Publicação:</label><input type="number" name="ano" min="1000" max="2100"></div>
         <div><label>Quantidade:</label><input type="number" name="quantidade" min="1" required></div>

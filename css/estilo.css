@@ -1,0 +1,216 @@
+/* ------------------------------------------- */
+/*           TEMA BIBLIOTECA PREMIUM           */
+/* ------------------------------------------- */
+
+body {
+    font-family: "Georgia", serif;
+    background: #f4efe6;
+    margin: 0;
+    padding: 30px;
+    color: #4a3928;
+}
+
+/* Container principal */
+.container {
+    max-width: 850px;
+    margin: 40px auto;
+    background: #fff7ec;
+    padding: 35px 40px;
+    border-radius: 12px;
+    border: 1px solid #d6c9b4;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+}
+
+/* TÍTULOS */
+h1, h2, h3 {
+    font-family: "Georgia", serif;
+    color: #5e4631;
+    margin-bottom: 18px;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.3rem; }
+
+/* TEXTOS */
+p, label {
+    font-size: 1.05rem;
+    color: #4a3928;
+}
+
+/* ------------------------------ */
+/* FORMULÁRIOS                    */
+/* ------------------------------ */
+
+form {
+    margin-bottom: 22px;
+}
+
+input, select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #c8b89f;
+    border-radius: 8px;
+    background: #fffdf9;
+    font-size: 1rem;
+}
+
+input:focus, select:focus {
+    border-color: #a18669;
+    background: #fff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(164, 132, 92, 0.4);
+}
+
+/* ------------------------------ */
+/* BOTÕES                         */
+/* ------------------------------ */
+
+button, .btn-custom, .btn-secondary, .btn-danger, .btn-primary {
+    padding: 12px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Botão principal marrom */
+.btn-primary, button {
+    background-color: #7b5a3d;
+    color: #fff;
+}
+
+.btn-primary:hover, button:hover {
+    background-color: #634730;
+}
+
+/* Botões secundários */
+.btn-secondary {
+    background-color: #cbb79c;
+    color: #3d2b1f;
+}
+
+.btn-secondary:hover {
+    background-color: #b8a589;
+}
+
+/* Botão perigoso */
+.btn-danger {
+    background-color: #9e3b3b;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #7c2f2f;
+}
+
+/* ------------------------------ */
+/* TABELAS                        */
+/* ------------------------------ */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table thead {
+    background: #7b5a3d;
+    color: white;
+}
+
+table thead th {
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+}
+
+table tbody tr {
+    background: #fffdf8;
+    border-bottom: 1px solid #e0d5c2;
+    transition: 0.15s;
+}
+
+table tbody tr:hover {
+    background: #f3e7d6;
+}
+
+table td {
+    padding: 12px;
+    font-size: 1rem;
+    color: #4a3928;
+}
+
+/* Status (solicitacoes.php) */
+.status-ativo {
+    color: #b17d15;
+    font-weight: bold;
+}
+
+.status-atrasado {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+.status-devolvido {
+    color: #2e8b57;
+    font-weight: bold;
+}
+
+/* ALERTAS */
+.alert {
+    border-radius: 8px !important;
+    padding: 15px !important;
+}
+
+.alert-info {
+    background: #e8dcc7;
+    color: #5a4b3a;
+    border: 1px solid #cbbda8;
+}
+
+.alert-success {
+    background: #e6f2dc;
+    color: #355e2b;
+}
+
+/* LINKS */
+a {
+    color: #7b5a3d;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ------------------------------------------- */
+/* EFEITO DE CARTÃO PARA PÁGINAS DE PERFIL     */
+/* ------------------------------------------- */
+
+.card {
+    background: #fff7ec;
+    border: 1px solid #d6c9b4;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 12px;
+}
+
+/* ------------------------------------------- */
+/* CAMPOS DE NÚMERO (comprar.php)              */
+/* ------------------------------------------- */
+
+input[type="number"] {
+    width: 90px;
+}
+
+/* ------------------------------------------- */
+/* HERO (se usar backgrounds temáticos)         */
+/* ------------------------------------------- */
+
+.hero::before {
+    background: rgba(255,255,255,0.65) !important;
+}

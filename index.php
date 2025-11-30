@@ -60,12 +60,8 @@ $funcao = $_SESSION['funcao'] ?? '';
                 <li class="nav-item">
                     <a class="nav-link" href="lista.php">Lista dos Livros</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="emprestimos.php">Empréstimos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="comprar.php">Comprar Livros</a>
-                </li>
+              
+           
             </ul>
         </div>
     </nav>

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Dados normais
     $titulo = trim($_POST['titulo'] ?? '');
     $autor = trim($_POST['autor'] ?? '');
-    $sessao = trim($_POST['sessao'] ?? '');
+  
     $editora = trim($_POST['editora'] ?? '');
     $ano = intval($_POST['ano'] ?? 0);
     $quantidade = intval($_POST['quantidade'] ?? 0);
@@ -30,40 +30,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $nomeCapa = null;
 
-        if (isset($_FILES['capa']) && $_FILES['capa']['error'] === 0) {
-
-            $pasta = "imagens/";
-
-            // cria pasta caso não exista
-            if (!is_dir($pasta)) {
-                mkdir($pasta, 0777, true);
-            }
-
-            $ext = strtolower(pathinfo($_FILES['capa']['name'], PATHINFO_EXTENSION));
-            $permitidas = ['jpg','jpeg','png','gif','webp'];
-
-            if (!in_array($ext, $permitidas)) {
-                $erro = "Formato inválido. Envie JPG, PNG, GIF ou WEBP.";
-            } else {
-
-                $nomeCapa = uniqid("capa_", true) . "." . $ext;
-                $destino = $pasta . $nomeCapa;
-
-                if (!move_uploaded_file($_FILES['capa']['tmp_name'], $destino)) {
-                    $erro = "Erro ao fazer upload da imagem.";
-                }
-            }
-        }
+       
 
         if (!$erro) {
-            $sql = "INSERT INTO livros (titulo, autor, sessao, editora, ano_publicacao, quantidade, capa) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO livros (titulo, autor,  editora, ano_publicacao, quantidade) 
+                    VALUES (?, ?, ?,  ?, ?)";
 
             $stmt = mysqli_prepare($connect, $sql);
 
             if ($stmt) {
-                mysqli_stmt_bind_param($stmt, "ssssiss",
-                    $titulo, $autor, $sessao, $editora, $ano, $quantidade, $nomeCapa
+                mysqli_stmt_bind_param($stmt, "sssss",
+                    $titulo, $autor,  $editora, $ano, $quantidade
                 );
 
                 if (mysqli_stmt_execute($stmt)) {
@@ -108,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div><label>Ano de Publicação:</label><input type="number" name="ano" min="1000" max="2100"></div>
         <div><label>Quantidade:</label><input type="number" name="quantidade" min="1" required></div>
 
-        <div><label>Capa do Livro:</label><input type="file" name="capa" accept="image/*"></div>
+        
 
         <button type="submit">Cadastrar Livro</button>
     </form>
